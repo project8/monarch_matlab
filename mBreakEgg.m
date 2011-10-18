@@ -24,7 +24,6 @@ function new_egg = mBreakEgg(filename)
 
   % read the header and stick it in the return.
   [header, ~] = fread(new_egg.handle,hdr_bytes,'char');
-  new_egg.raw_header = transpose(char(header));
 
   % maybe some day there will be a nice way to do this.
   tmpfilename = '/tmp/mm_tmp';
@@ -38,7 +37,6 @@ function new_egg = mBreakEgg(filename)
 
   % now parse the temporary file.
   parsed_header = xml2struct(tmpfilename);
-  new_egg.parsed_header = parsed_header;
   
   % ok, now for each child, get the data out that we care about.
   for child = parsed_header.children
